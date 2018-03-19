@@ -490,8 +490,8 @@ class Bunyad_Theme_SmartMag
 
 		// register dynamic sidebar
 		register_sidebar(array(
-			'name' => __('Right Mini Slider', 'bunyad'),
-			'id'   => 'mini-slider-right',
+			'name' => __('Mini Slider', 'bunyad'),
+			'id'   => 'mini-slider',
 			'description' => __('Please place only a single widget. Preferably a gallery slider.', 'bunyad'),
 			'before_title' => '',
 			'after_title'  => '',

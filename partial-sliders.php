@@ -150,32 +150,19 @@ $i = $z = 0; // loop counters
 
 			<div class="blocks col-4">
 
-			<?php if (!empty($grid_query) && $grid_query->have_posts()): ?>
+				<?php for ($z = 1; $z < 4; ++$z): ?>
 
-				<?php while ($grid_query->have_posts()): $grid_query->the_post(); $z++;
-
-						if (!has_post_thumbnail()) {
-							continue;
-						}
-
-						// custom label selected?
-						if (($cat_label = Bunyad::posts()->meta('cat_label'))) {
-							$category = get_category($cat_label);
-						}
-						else {
-							$category = current(get_the_category());
-						}
-				?>
 
 				<article class="<?php echo ($z == 1 ? 'large' : ($z == 2 ? 'small' : 'small last')); ?>">
 
 				<?php if ($z == 1): ?>
-					<span class="cat cat-title cat-<?php echo $category->cat_ID; ?>">
-						<!--<a href="<?php echo esc_url(get_category_link($category)); ?>"><?php echo esc_html($category->name); ?></a>-->
-						<a href="<?php echo esc_url(get_the_permalink()); ?>"><?php echo esc_html($category->name); ?></a>
-					</span>
+					<div class="image-link">
+						<?php 
+							dynamic_sidebar('mini-slider-right');
+						?>
+					</div>
 				<?php endif; ?>
-
+					
 				<?php if ($z == 3): ?>
 					<a target="_blank" href="https://br.jooble.org/vagas-de-emprego-tecnico-seguran%C3%A7a" class="image-link">
 						<img src="https://br.jooble.org/css/images/logos/jooble_80x60.png" alt="Emprego no Brasil" class="slider-small"/>
@@ -184,19 +171,12 @@ $i = $z = 0; // loop counters
 					<a href="http://defesaeseguranca.com.br/embraer-boeing/" class="image-link">
 						<img src="http://defesaeseguranca.com.br/wp-content/uploads/2017.png" alt="Embraer Boeing" class="slider-small"/>
 					</a>
-				<?php else: ?>
-					<a href="<?php the_permalink(); ?>" class="image-link"><?php
-					 	the_post_thumbnail(($z == 1 ? 'main-block' : 'slider-small'), array('alt' => esc_attr(get_the_title()), 'title' => '')); ?></a>
-
-					 <h3><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
 				<?php endif; ?>
 
 				</article>
 
 
-				<?php endwhile; ?>
-
-			<?php endif; // end post count check ?>
+				<?php endfor; ?>
 			</div>
 
 		</div> <!-- .row -->
